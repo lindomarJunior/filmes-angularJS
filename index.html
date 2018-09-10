@@ -9,12 +9,14 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<script src="js/filmes.module.js"></script>
 	<script src="js/filmes.controller.js"></script>
+	<script src="js/filme.directive.js"></script>
 </head>
 <body>
 	<div class="container" ng-controller="FilmesController">
 		<h1>{{ titulo }}</h1>
 		
 		<div class="lista-filmes">
+			<!--
 			<div class="filme com-cartaz" ng-repeat="filme in filmes">
 				<h1>{{ filme.titulo }}</h1>
 				<button class="del" title="Excluir" ng-click="removerFilme(filme.id)"></button>
@@ -25,6 +27,8 @@
 				</ul>
 				<p>{{ filme.sinopse }}</p>
 			</div>	
+			--->
+			<dv-Filme ng-repeat="filme in filmes"></dv-Filme>
 		</div>
 
 		<hr>
