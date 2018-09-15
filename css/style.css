@@ -48,6 +48,7 @@ button {
 }
 
 .lista-filmes .filme.com-cartaz {
+	display: block;
 	overflow: hidden;
 	padding-left: 200px;
 }
@@ -149,4 +150,8 @@ button {
 
 .form-filmes button[type="reset"]:hover {
 	background-color: #CCD1D9;
+}
+
+input.ng-touched.ng-invalid, textarea.ng-touched.ng-invalid {
+	border-color: #F99;
 }

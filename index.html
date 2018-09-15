@@ -10,6 +10,7 @@
 	<script src="js/filmes.module.js"></script>
 	<script src="js/filmes.controller.js"></script>
 	<script src="js/filme.directive.js"></script>
+	<script src="js/meus-filmes.factory.js"></script>
 </head>
 <body>
 	<div class="container" ng-controller="FilmesController">
@@ -28,32 +29,35 @@
 				<p>{{ filme.sinopse }}</p>
 			</div>	
 			--->
-			<dv-Filme ng-repeat="filme in filmes"></dv-Filme>
+			<dv-Filme ng-repeat="f in filmes" item="f" fn-fechar="removerFilme(f.id)"></dv-Filme>
 		</div>
 
 		<hr>
 
-		<form class="form-filmes" ng-submit="adicionarFilme()">
+		<form name="formFilme" class="form-filmes" ng-submit="adicionarFilme()" novalidate>
 			<h1>Adicionar Filme</h1>
 			<div class="form-campo">
 				<label for="titulo">Título</label>
-				<input type="text" id="titulo" ng-model="novoFilme.titulo">
+				<input type="text" id="titulo" name="titulo" ng-model="novoFilme.titulo" required>
+				<div ng-if="formFilme.titulo.$touched && formFilme.titulo.$invalid">
+					<span ng-if="formFilme.titulo.$error.required">Campo Obrigatório</span>
+				</div>
 			</div>
 			<div class="form-campo pequeno">
 				<label for="ano">Ano de Lançamento</label>
-				<input type="number" id="ano" ng-model="novoFilme.ano">
+				<input type="number" id="ano" ng-model="novoFilme.ano" required>
 			</div>
 			<div class="form-campo medio">
 				<label for="produtora">Produtora</label>
-				<input type="text" id="produtora" ng-model="novoFilme.produtora">
+				<input type="text" id="produtora" ng-model="novoFilme.produtora" required>
 			</div>
 			<div class="form-campo">
 				<label for="cartaz">Url do Cartaz</label>
-				<input type="text" id="cartaz" ng-model="novoFilme.cartaz">
+				<input type="text" id="cartaz" ng-model="novoFilme.cartaz" required>
 			</div>
 			<div class="form-campo">
 				<label for="sinopse">Sinópse</label>
-				<textarea id="sinopse" rows="5" ng-model="novoFilme.sinopse"></textarea>
+				<textarea id="sinopse" rows="5" ng-model="novoFilme.sinopse" required></textarea>
 			</div>
 
 			<footer>
